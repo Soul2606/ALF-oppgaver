@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Velkommen til generator</h2>
+    <label for="name">Navn</label>
+    <input name="name" type="text" id="name">
+
+    <br>
+
+    <div class="dropdown">
+        <p>Kjønn</p>
+        <div class="dropdown-container">
+            <p id="gender-man">Mann</p>
+            <p id="gender-woman">Dame</p>
+        </div>
+    </div>
+
+    <label for="age">Alder</label>
+    <input name="age" type="number" id="age">
+
+    <br>
+
+    <button id="generate-story">Lag historie</button>
+
+    <p id="story"></p>
+
+    <style>
+
+        .dropdown-container{
+            display: none;
+        }
+
+        .dropdown:hover > .dropdown-container{
+            display: block;
+        }
+
+        .dropdown{
+            width: min-content;
+        }
+
+    </style>
+
+    <script>
+        const name_element = document.getElementById("name")
+        const age_element = document.getElementById("age")
+        const gender_man_element = document.getElementById("gender-man").addEventListener("click", set_gender)
+        const gender_woman_element = document.getElementById("gender-woman").addEventListener("click", set_gender)
+        const generate_story_button_element = document.getElementById("generate-story").addEventListener("click", generate_story)
+        const story_element = document.getElementById("story")
+
+        let gender
+  
+
+        function set_gender(){
+            this.id === "gender-man"? gender = "man": gender = "dame"
+        }
+
+        function generate_story(){
+            let name = name_element.value
+            let age = age_element.value
+            story_element.textContent = "Det var en gang en " + gender + " som het " + name + ". Denne personen er " + age + " år, og har " + (100 - age) + " år igjen til 100-årsdagen sin!"
+        }
+    </script>
+</body>
+</html>
