@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Gjett et tall</h1>
+    <input type="range" value="0" min="0" max="100" id="number" style="width: 300px;">
+    <p id="number-feedback">0</p>
+
+    <button id="guess">Gjett</button>
+
+    <p id="results"></p>
+
+    <script>
+        const slider_element = document.getElementById("number")
+        const slider_feedback_element = document.getElementById("number-feedback")
+        const guess_button = document.getElementById("guess").addEventListener("click", test_guess)
+        const results_element = document.getElementById("results")
+
+        let guess = 0
+
+        slider_element.addEventListener("mousemove", function(){
+            guess = slider_element.value
+            slider_feedback_element.textContent = guess
+        })
+
+        function test_guess(){
+            const random_number = Number.parseInt(Math.random() * 100)
+            results_element.textContent = random_number === guess? "Du gjettet riktig": "Du gjettet feil. Riktig svar var: " + random_number
+        }
+    </script>
+</body>
+</html>
