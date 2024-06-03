@@ -1,0 +1,34 @@
+
+body{
+    background-color: black;
+    font-size: xx-large;
+    color: white;       
+}
+
+h1{
+    border: solid 3px red;
+}
+
+p{
+    border: solid 3px red;
+}
+
+.image{
+    height:120vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size:contain;
+    border: solid 3px red;
+    grid-column: 1/4;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 25px;
+}
+
+.title{
+    grid-column: 1/2;
+}

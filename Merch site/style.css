@@ -1,0 +1,34 @@
+body{
+    background-color: hsl(250, 10%, 12%);
+    color: white;
+    font-size: xx-large;
+    text-align: center;
+}
+
+a{
+    background-color: hsla(0, 0%, 100%, 0);
+    text-shadow: 0 0 5px black;
+}
+
+.grayed-out{
+    color: dimgray;
+    margin: 2px;
+}
+
+.center-horizontal{
+    display: flex;
+    justify-content: center;
+}
+
+.flexbox{
+    display: flex;
+}
+
+.image-scalable{
+    max-width: 100%;
+}
+
+.background1{
+    background-image: url(Galaxy\ m82.jpg);
+    background-size: cover;
+}

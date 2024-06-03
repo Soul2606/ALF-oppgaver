@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Age</label>
+    <input id="input-age" type="number">
+    <label>Distance Km</label>
+    <input id="input-distance" type="number">
+    <button id="button-calculate">Calculate</button>
+    <p id="results"></p>
+    <script>
+        const input_age_element = document.getElementById("input-age")
+        const input_distance_element = document.getElementById("input-distance")
+        const results_element = document.getElementById("results")
+        const button_calculate_element = document.getElementById("button-calculate")
+        button_calculate_element.addEventListener("click", calculate)
+
+        function calculate(){
+            const age = input_age_element.value
+            const distance = input_distance_element.value
+            let age_price_factor = 1
+            if(age < 12){
+                age_price_factor = 0.5
+            }else if(age > 67){
+                age_price_factor = 0.8
+            }
+            const price = 3.52 * distance * age_price_factor
+            results_element.textContent = "price: " + price + ",-"
+        }
+    </script>
+</body>
+</html>

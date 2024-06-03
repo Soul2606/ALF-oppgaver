@@ -1,0 +1,12 @@
+
+footer{
+    background-color: gray;
+    margin-top: 50px;
+}
+
+.forum-element{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    padding: 6px;
+}
