@@ -21,6 +21,7 @@
         const results_element = document.getElementById("results")
 
         let guess = 0
+        let random_number = Number.parseInt(Math.random() * 100)
 
         slider_element.addEventListener("mousemove", function(){
             guess = slider_element.value
@@ -28,8 +29,12 @@
         })
 
         function test_guess(){
-            const random_number = Number.parseInt(Math.random() * 100)
-            results_element.textContent = random_number === guess? "Du gjettet riktig": "Du gjettet feil. Riktig svar var: " + random_number
+            if(random_number === Number(guess)){
+                results_element.textContent = "Du gjettet riktig. Ny runde starter"
+                random_number = Number.parseInt(Math.random() * 100)
+            }else{
+                results_element.textContent = random_number < guess? "Du gjettet for høyt": "Du gjettet for laft"
+            }
         }
     </script>
 </body>
