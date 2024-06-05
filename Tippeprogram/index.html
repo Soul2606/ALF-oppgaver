@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <label for="">Tippetegn</label>
+    <br>
+    <button id="button">Send</button>
+    <p id="result"></p>
+    <script>
+        const button_element = document.getElementById("button").addEventListener("click", send)
+        const result_element = document.getElementById("result")
+        
+        function send(){
+            const symbol = document.getElementById("input").value
+            
+            let text
+            switch (symbol) {
+                case "H":
+                case "h":
+                    text = "Hjemme"
+                    break
+                case "U":
+                case "u":
+                    text = "Uavgjort"
+                    break
+                case "B":
+                case "b":
+                    text = "Borte"
+                    break
+            
+                default:
+                    text = "Skriv inn H, U eller B"
+                    break;
+            }
+            result_element.textContent = text
+
+        }
+    </script>
+</body>
+</html>
