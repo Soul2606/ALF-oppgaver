@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="prime" id="prime">
+    <button id="submit">Submit</button>
+    <p id="output"></p>
+</body>
+<script>
+
+const input = document.getElementById("prime")
+const button = document.getElementById("submit")
+const output = document.getElementById("output")
+
+
+button.addEventListener("click", function(){
+    const number_to_check = Math.abs(Number.parseInt(input.value))
+    for(let i=2;i<number_to_check;i++){
+        if(Number.isInteger(number_to_check / i)){
+            output.textContent = "is not prime"
+            return
+        }
+    }
+    output.textContent = "is prime"
+})
+
+</script>
+</html>

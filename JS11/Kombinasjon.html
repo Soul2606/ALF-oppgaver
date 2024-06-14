@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Symboler separeres med komma</p>
+    <input type="text" id="input">
+    <input type="range" value="2" min="1" max="8" id="range">
+    <label id="range-display">2</label>
+    <br>
+    <br>
+    <button id="submit">Submit</button>
+    <div style="width: 100vw;">
+        <p id="output" style="text-wrap: wrap;"></p>
+    </div>
+</body>
+<script>
+
+const button = document.getElementById("submit")
+const output = document.getElementById("output")
+const rang = document.getElementById("range")
+const rang_display = document.getElementById("range-display")
+
+let combinations = 2
+
+
+
+
+function copy_and_append_items(value, array){
+    let new_array = []
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        new_array.push(value + element)
+    }
+    return new_array
+}
+
+rang.addEventListener("input", function(){
+    combinations = rang.value
+    rang_display.textContent = combinations
+})
+
+button.addEventListener("click", function(){
+    const user_input = document.getElementById("input").value
+    const strings = user_input.split(",")
+    let results = Array.from(strings)
+    for (let j = 0; j < combinations - 1; j++) {
+        for (let i = 0; i < results.length; i++) {
+            let string_from_results = results[i];
+            results[i] = copy_and_append_items(string_from_results, strings)
+            console.log(Array.from(results))
+        }
+        results = results.flat()
+        console.log(results)
+    }
+    for (let i = 0; i < results.length; i++) {
+        const element = results[i]
+        results[i] = " "+element
+    }
+    output.textContent = results
+})
+
+</script>
+</html>
