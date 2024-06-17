@@ -7,8 +7,10 @@
 </head>
 <body>
     <h1>Arrays</h1>
-    <button id="generate-random-array">Generate random array</button>
-    <p id="random-array">0</p>
+    <header>
+        <button id="generate-random-array">Generate random array</button>
+        <p id="random-array">0</p>
+    </header>
     <h3>Backwards</h3>
     <p id="backwards-p">0</p>
     <h3>Every other element</h3>
@@ -20,7 +22,17 @@
     <h3>Sum of all elements</h3>
     <p id="sum">0</p>
     <h3>All prime numbers</h3>
-    <p id="prime"></p>
+    <p id="prime">0</p>
+    <h3>Amount of negative numbers</h3>
+    <p id="negative-amount">0</p>
+    <h3>Average</h3>
+    <p id="average">0</p>
+    <h3>Lowest element</h3>
+    <p id="lowest">0</p>
+    <h3>Sum of even numbers</h3>
+    <p id="sum-even">0</p>
+    <h3>Amount of each number from 0 to 9</h3>
+    <p id="amount-of-each"></p>
 </body>
 
 
@@ -28,7 +40,12 @@
 <style>
 
 
-
+header{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: solid black 2px;
+}
 
 
 </style>
@@ -41,7 +58,7 @@
 
 const generate_random_array_button = document.getElementById("generate-random-array")
 generate_random_array_button.addEventListener("click", function(){
-    const random_array = generate_random_array(5, 20, 0, 100, true)
+    const random_array = generate_random_array(5, 8, 0, 10, true)
     document.getElementById("random-array").textContent = random_array
 
 
@@ -60,6 +77,29 @@ generate_random_array_button.addEventListener("click", function(){
     document.getElementById("sum").textContent = sum_array(random_array)
 
     document.getElementById("prime").textContent = filter_array(random_array, isPrime)
+
+    document.getElementById("negative-amount").textContent = filter_array(random_array, function(n){
+        return n < 0
+    }).length
+
+    document.getElementById("average").textContent = sum_array(random_array) / random_array.length
+
+    document.getElementById("lowest").textContent = lowest(random_array)
+
+    document.getElementById("sum-even").textContent = sum_array(filter_array(random_array, function(n){
+        return n % 2 === 0
+    }))
+
+    {
+        let amount_of_each = []
+        for (let i = 0; i < 10; i++) {
+            let amount_of_i = filter_array(random_array, function(n){
+                return n === i
+            }).length
+            amount_of_each.push(amount_of_i)
+        }
+        document.getElementById("amount-of-each").textContent = amount_of_each
+    }
 })
 
 
@@ -69,7 +109,7 @@ function generate_random_array(min_length, max_length, min_value, max_value, int
     const length = Math.round(Math.random() * (max_length - min_length) + min_length)
     let array = []
     for (let i = 0; i < length; i++) {
-        const random_number = integer? Math.round(Math.random() * (max_length - min_length) + min_length): Math.random() * (max_length - min_length) + min_length
+        const random_number = integer? Math.round(Math.random() * (max_value - min_value) + min_value): Math.random() * (max_value - min_value) + min_value
         array.push(random_number)
     }
     return array
@@ -144,7 +184,6 @@ function sum_array(array){
 
 
 
-
 function isPrime(num) {
     if (num <= 1) {
         return false;
@@ -155,6 +194,20 @@ function isPrime(num) {
         }
     }
     return true;
+}
+
+
+
+
+function lowest(array){
+    let lowest_of_known = Infinity
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        if(element < lowest_of_known){
+            lowest_of_known = element
+        }
+    }
+    return lowest_of_known
 }
 
 
