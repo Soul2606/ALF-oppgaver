@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Arrays</h1>
+    <button id="generate-random-array">Generate random array</button>
+    <p id="random-array">0</p>
+    <h3>Backwards</h3>
+    <p id="backwards-p">0</p>
+    <h3>Every other element</h3>
+    <p id="every-other-element">0</p>
+    <h3>Every element less than 10</h3>
+    <p id="less-than10">0</p>
+    <h3>Every even element</h3>
+    <p id="even">0</p>
+    <h3>Sum of all elements</h3>
+    <p id="sum">0</p>
+    <h3>All prime numbers</h3>
+    <p id="prime"></p>
+</body>
+
+
+
+<style>
+
+
+
+
+
+</style>
+
+
+
+<script>
+
+
+
+const generate_random_array_button = document.getElementById("generate-random-array")
+generate_random_array_button.addEventListener("click", function(){
+    const random_array = generate_random_array(5, 20, 0, 100, true)
+    document.getElementById("random-array").textContent = random_array
+
+
+    document.getElementById("backwards-p").textContent = array_backwards(random_array)
+
+    document.getElementById("every-other-element").textContent = every_nth_element(random_array, 2, 0)
+
+    document.getElementById("less-than10").textContent = filter_array(random_array, function(n){
+        return n < 10
+    })
+
+    document.getElementById("even").textContent = filter_array(random_array, function(n){
+        return n % 2 === 0
+    })
+
+    document.getElementById("sum").textContent = sum_array(random_array)
+
+    document.getElementById("prime").textContent = filter_array(random_array, isPrime)
+})
+
+
+
+
+function generate_random_array(min_length, max_length, min_value, max_value, integer){
+    const length = Math.round(Math.random() * (max_length - min_length) + min_length)
+    let array = []
+    for (let i = 0; i < length; i++) {
+        const random_number = integer? Math.round(Math.random() * (max_length - min_length) + min_length): Math.random() * (max_length - min_length) + min_length
+        array.push(random_number)
+    }
+    return array
+}
+
+
+
+
+function array_backwards(array){
+    let backwards_array = []
+
+    for (let i = array.length - 1; i >= 0; i--) {
+        const element = array[i];
+        backwards_array.push(element)
+    }
+    return backwards_array
+}
+
+
+
+
+function every_nth_element(array, nth_element, offset){
+    if(isNaN(nth_element)){
+        throw new Error(nth_element + " is not a number")
+    }
+
+
+
+    let spacing = Math.abs(Number.parseInt(nth_element))
+
+    if(spacing === 0){
+        return array[offset]
+    }
+
+    let new_array = []
+
+    for (let i = offset % array.length; i < array.length; i += spacing) {
+        const element = array[i];
+        new_array.push(element)
+    }
+    return new_array
+}
+
+
+
+
+
+function filter_array(array, filter_function){
+    let elements_passed = []
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        if(filter_function(element)){
+            elements_passed.push(element)
+        }
+    }
+    return elements_passed
+}
+
+
+
+
+
+function sum_array(array){
+    let sum = 0
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        sum += element
+    }
+    return sum
+}
+
+
+
+
+
+function isPrime(num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+</script>
+</html>
