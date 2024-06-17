@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sorting groups</h1>
+    <p id="array"></p>
+</body>
+<style>
+
+</style>
+<script>
+
+
+
+
+function random_groups_array(array_length, amount_of_groups){
+    let array = []
+    for (let i = 0; i < array_length; i++) {
+        array.push(Math.ceil(Math.random() * amount_of_groups))
+    }
+    return array
+}
+
+
+
+
+function swap(array, index1, index2){
+    let temp = array[index1]
+    array[index1] = array[index2]
+    array[index2] = temp
+}
+
+
+
+
+function sort_group(array, amount_of_groups){
+    let lowest_of_each_group = []
+    for (let i = 0; i < amount_of_groups; i++) {
+        lowest_of_each_group.push(Infinity)
+    }
+    console.log("array", Array.from(array), "\n lowest_of_each_group", Array.from(lowest_of_each_group))
+
+
+    let previous_element = 0
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        if (i < lowest_of_each_group[element - 1]) {
+            lowest_of_each_group[element - 1] = i
+            console.log("lowest_of_each_group", lowest_of_each_group)
+        }
+        if (element < previous_element) {
+            let swap_1 = lowest_of_each_group[previous_element - 1]
+            let swap_2 = i
+            swap(array, swap_1, swap_2)
+            lowest_of_each_group[previous_element - 1] = swap_1 + 1
+            console.log("i", i, "\n array", Array.from(array), "\n lowest_of_each_group", Array.from(lowest_of_each_group), "\n swapped", swap_1, swap_2)
+        }
+        previous_element = element
+    }
+    /*
+    slightly broken but it works.
+    lowest of each group does not update correctly.
+    */
+}
+
+
+
+
+const array_of_groups = random_groups_array(25, 2)
+document.getElementById("array").textContent = array_of_groups
+
+sort_group([2,1,2,2,1,2,1], 2)
+
+
+</script>
+</html>
