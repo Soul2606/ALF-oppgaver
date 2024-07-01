@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Dummy text background color simulator</h2>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sunt at iste repudiandae repellendus non, iusto asperiores molestias temporibus odio. Sequi nobis aliquid saepe nihil qui quasi, impedit eius repellat. Dolorem, veniam. Praesentium eius voluptatibus rerum, est nostrum recusandae eum laborum neque natus quam vero obcaecati, esse delectus tempore harum ratione eaque, quas voluptates quos quaerat debitis. Recusandae, exercitationem consectetur! Optio ab ut rerum pariatur, molestias numquam? Provident ut itaque fuga aperiam quis repellendus est velit molestiae praesentium commodi, dolor maiores porro officiis delectus voluptas maxime non consequuntur qui odio optio dolorum! Cumque sapiente iusto, consequatur natus consectetur, delectus laudantium quia dolorum facere alias et possimus harum accusantium aliquid veritatis quae explicabo? Architecto impedit et odio culpa laborum ab quisquam accusamus rem quo? Illum nesciunt placeat nobis sequi magnam possimus et magni soluta quia, excepturi necessitatibus commodi atque velit. Aperiam exercitationem reiciendis voluptatibus praesentium id harum provident cum, optio a explicabo officia earum error aut rem quisquam illum esse numquam, consequuntur vero tempora voluptas officiis repellat. Commodi dicta rem assumenda provident qui facere aut quibusdam officiis. Eum numquam alias incidunt commodi aspernatur repellendus quo nihil quasi animi dolores unde in, vitae minima ratione. Quasi temporibus, accusamus tempora veritatis suscipit in saepe dolor atque? Necessitatibus porro nobis tempore eveniet, tempora a voluptates odit deserunt asperiores officiis minima delectus voluptatibus, repudiandae quos earum reprehenderit vero ipsa beatae at laborum vel laudantium amet. Recusandae, rem laborum cupiditate error, est sit sunt voluptatum quis dolor quam odio perspiciatis? Cum deserunt nemo mollitia error ipsam corporis ea voluptates! Commodi nulla architecto laborum quis expedita, officiis necessitatibus, dignissimos possimus laudantium quod veniam asperiores ipsam, mollitia impedit quaerat vero. Quidem reprehenderit, veniam tempore consequatur at aperiam minus asperiores autem ullam, nam sapiente tenetur aliquid saepe ipsam, odio ab hic soluta veritatis perspiciatis laudantium eius voluptatum molestias dolore! Enim expedita necessitatibus voluptas fugit neque labore quaerat, ullam error dolorum itaque incidunt! Quo voluptas vero, molestiae rerum sit facere. Commodi, sapiente illum expedita ad totam nam quos, fuga fugit aliquid enim eius! Nobis ab explicabo voluptatem totam consectetur, expedita, consequatur, error inventore nemo molestiae esse culpa suscipit! Blanditiis libero reiciendis iure eveniet. Excepturi sint impedit consequuntur porro mollitia quae, tempora id expedita ab sequi voluptatum harum rerum molestias dolorum? Rem eveniet cupiditate esse magnam, placeat dignissimos ratione. Odit molestias sequi eligendi explicabo temporibus. Temporibus impedit sed, commodi minus necessitatibus soluta rerum optio quam fugit! In modi vel excepturi omnis eos sapiente quod quam exercitationem, nostrum itaque doloribus officiis iste dolorem odit dolore nisi est quidem. Dignissimos odit distinctio quasi ullam totam quas ut vel, ipsam voluptate nihil odio voluptates sapiente at placeat optio dolore, nostrum deserunt? Repudiandae a quas reprehenderit aperiam. Id magnam facilis provident minima eos. Et asperiores fugit, aliquam vero neque magnam, nesciunt laborum blanditiis nostrum debitis provident, nobis ex! Facilis repellat obcaecati neque maiores quo iusto, harum, ad dolorem nulla nostrum officiis beatae ex voluptatem rem perferendis vel unde esse quisquam ullam? Nisi dignissimos animi soluta, consequuntur voluptatum quasi unde repellat, quis, qui illum maxime culpa?</p>
+
+    <p>Select color</p>
+    <button id="button-red">Red</button>
+    <button id="button-yellow">Yellow</button>
+    <button id="button-blue">Blue</button>
+    <button id="button-green">Green</button>
+    <button id="button-white">White</button>
+<script>
+
+
+
+window.onload = start
+
+function start(){
+    const background_color = localStorage.getItem("background_color")
+    if (background_color != null) {
+        set_background_color(background_color)
+    }
+}
+
+
+document.getElementById("button-red").addEventListener("click", ()=>(set_background_color("red")))
+document.getElementById("button-yellow").addEventListener("click", ()=>(set_background_color("yellow")))
+document.getElementById("button-blue").addEventListener("click", ()=>(set_background_color("blue")))
+document.getElementById("button-green").addEventListener("click", ()=>(set_background_color("green")))
+document.getElementById("button-white").addEventListener("click", ()=>(set_background_color("white")))
+
+function set_background_color(color){
+    localStorage.setItem("background_color", color)
+    document.body.style.backgroundColor = color
+}
+
+</script>
+</body>
+</html>

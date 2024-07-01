@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1 id="welcome-message"></h1>
+	<input type="text" name="user-name" id="user-name">
+	<label for="user-name">Name</label>
+	<button id="submit-button">Submit</button>
+	<br>
+	<br>
+	<button id="clear-name">Clear name</button>
+	<label id="clear-name-feedback" style="display: none;">Username successfully cleared</label>
+<style>
+
+</style>
+<script>
+
+const local_storage_user_name = localStorage.getItem("user_name")
+if (local_storage_user_name == undefined) {
+	document.getElementById("welcome-message").textContent = "Welcome to my app, please register a username"
+} else {
+	document.getElementById("welcome-message").textContent = "Welcome back " + local_storage_user_name
+}
+
+document.getElementById("submit-button").addEventListener("click", ()=>{
+	
+	const user_name = document.getElementById("user-name").value
+	localStorage.setItem("user_name", user_name)
+	
+})
+
+document.getElementById("clear-name").addEventListener("click", ()=>{
+	
+	localStorage.removeItem("user_name")
+	document.getElementById("clear-name-feedback").style.display = "block"
+
+	setTimeout()
+	
+})
+
+
+</script>
+</body>
+</html>
