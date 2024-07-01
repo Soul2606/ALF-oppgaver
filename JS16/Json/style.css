@@ -1,10 +1,27 @@
+
+body{
+    background-color: black;
+    color: white;
+    line-height: 0px;
+}
+
 .flex-row{
     display: flex;
-    align-items: center;
 }
 
 .flex-column{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+}
+
+.object{
+    height: min-content;
+    width: min-content;
+    border-top: solid white 1px;
+    border-left: solid white 1px;
+    margin: 1px;
+}
+
+.object-satellites{
+    margin: 2px;
 }
