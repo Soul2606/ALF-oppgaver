@@ -1,8 +1,9 @@
 
 body{
-    background-color: black;
+    background-color: rgb(31, 31, 34);
     color: white;
-    line-height: 0px;
+    line-height: 20px;
+    text-wrap: nowrap;
 }
 
 .flex-row{
@@ -17,8 +18,6 @@ body{
 .object{
     height: min-content;
     width: min-content;
-    border-top: solid white 1px;
-    border-left: solid white 1px;
     margin: 1px;
 }
 
