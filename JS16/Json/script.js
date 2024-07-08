@@ -12,7 +12,7 @@ function create_planetary_object_info_element(name, type, flex_direction, satell
 	name_element.textContent = name
 	text_info_container.appendChild(name_element)
 
-	const type_element = document.createElement("h4")
+	const type_element = document.createElement("p")
 	type_element.textContent = type
 	text_info_container.appendChild(type_element)
 	

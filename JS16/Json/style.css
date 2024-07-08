@@ -21,6 +21,10 @@ body{
     margin: 1px;
 }
 
+.object-info{
+    padding: 0 15px;
+}
+
 .object-satellites{
     margin: 2px;
 }
