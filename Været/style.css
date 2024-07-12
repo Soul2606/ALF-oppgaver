@@ -3,8 +3,12 @@ body{
     color: white;
 }
 
-a{
+a:link{
     color: rgb(99, 219, 255);
+}
+
+a:visited{
+    color: rgb(210, 138, 252);
 }
 
 table{
