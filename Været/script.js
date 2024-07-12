@@ -50,19 +50,19 @@ function create_weather_table(weather_data) {
         timeseries_item_div.appendChild(time_td)
 
         const air_pressure_at_sea_level_td = document.createElement("td")
-        air_pressure_at_sea_level_td.textContent = data_instant.air_pressure_at_sea_level
+        air_pressure_at_sea_level_td.textContent = data_instant.air_pressure_at_sea_level + "hPa"
         timeseries_item_div.appendChild(air_pressure_at_sea_level_td)
 
         const air_temperature_td = document.createElement("td")
-        air_temperature_td.textContent = data_instant.air_temperature
+        air_temperature_td.textContent = data_instant.air_temperature + "c"
         timeseries_item_div.appendChild(air_temperature_td)
 
         const cloud_area_fraction_td = document.createElement("td")
-        cloud_area_fraction_td.textContent = data_instant.cloud_area_fraction
+        cloud_area_fraction_td.textContent = data_instant.cloud_area_fraction + "%"
         timeseries_item_div.appendChild(cloud_area_fraction_td)
 
         const relative_humidity_td = document.createElement("td")
-        relative_humidity_td.textContent = data_instant.relative_humidity
+        relative_humidity_td.textContent = data_instant.relative_humidity + "%"
         timeseries_item_div.appendChild(relative_humidity_td)
 
         const wind_from_direction_td = document.createElement("td")
