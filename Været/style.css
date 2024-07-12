@@ -7,10 +7,20 @@ a{
     color: rgb(99, 219, 255);
 }
 
-.flex{
-    display: flex;
+table{
+    border-spacing: 0;
 }
 
-.timeseries-item{
+td{
+    border-top: solid white 1px;
+    border-left: solid white 1px;
+}
+
+th{
+    border-top: solid white 1px;
+    border-left: solid white 1px;
+}
+
+.flex{
     display: flex;
 }

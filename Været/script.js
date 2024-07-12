@@ -11,6 +11,7 @@ const current_time = {
 }
 const weather_data = JSON.parse(localStorage.getItem("weather data"))
 const timeseries_div = document.getElementById("timeseries")
+const weather_table = document.getElementById("weather-table")
 const year_p = document.getElementById("year")
 const month_p = document.getElementById("month")
 
@@ -53,22 +54,57 @@ for (let i = 0; i < weather_data_timeseries.length; i++) {
     const data = weather_data_timeseries[i].data
     const time = weather_data_timeseries[i].time.slice(0, 13).split("-")
     const data_instant = data.instant.details
-    const data_next_6_hours = data.next_6_hours.summary.symbol_code
-    const data_next_12_hours = data.next_12_hours.summary.symbol_code
 
-    console.log(time, data)
+    let data_next_1_hours
+    let data_next_6_hours
+    let data_next_12_hours
+    if(data.next_1_hours !== undefined && data.next_6_hours !== undefined && data.next_12_hours !== undefined){    
+        data_next_1_hours = data.next_1_hours.summary.symbol_code
+        data_next_6_hours = data.next_6_hours.summary.symbol_code
+        data_next_12_hours = data.next_12_hours.summary.symbol_code
+    }
 
-    const timeseries_item_div = document.createElement("div")
+    console.log(data)
+    console.log('time', time, 'instant', data_instant, 'next 1 hours', data_next_1_hours, 'next 6 hours', data_next_6_hours, 'next 12 hours', data_next_12_hours)
+
+    const timeseries_item_div = document.createElement("tr")
     timeseries_item_div.className = "timeseries-item"
 
-    const time_p = document.createElement("p")
-    time_p.textContent = time[2].slice(0,2) + ":" + time[2].slice(3,5)
-    time_p.style = "margin-right: 20px;"
-    timeseries_item_div.appendChild(time_p)
+    const time_td = document.createElement("td")
+    time_td.textContent = time[2].slice(0,2) + ":" + time[2].slice(3,5)
+    timeseries_item_div.appendChild(time_td)
 
-    const air_pressure_at_sea_level_p = document.createElement("p")
-    air_pressure_at_sea_level_p.textContent = "Air pressure at sea level: " + data_instant.air_pressure_at_sea_level
-    timeseries_item_div.appendChild(air_pressure_at_sea_level_p)
+    const air_pressure_at_sea_level_td = document.createElement("td")
+    air_pressure_at_sea_level_td.textContent = data_instant.air_pressure_at_sea_level
+    timeseries_item_div.appendChild(air_pressure_at_sea_level_td)
+    
+    const air_temperature_td = document.createElement("td")
+    air_temperature_td.textContent = data_instant.air_temperature
+    timeseries_item_div.appendChild(air_temperature_td)
+    
+    const cloud_area_fraction_td = document.createElement("td")
+    cloud_area_fraction_td.textContent = data_instant.cloud_area_fraction
+    timeseries_item_div.appendChild(cloud_area_fraction_td)
+    
+    const relative_humidity_td = document.createElement("td")
+    relative_humidity_td.textContent = data_instant.relative_humidity
+    timeseries_item_div.appendChild(relative_humidity_td)
+    
+    const wind_from_direction_td = document.createElement("td")
+    wind_from_direction_td.textContent = data_instant.wind_from_direction
+    timeseries_item_div.appendChild(wind_from_direction_td)
+    
+    const next_1_hours_td = document.createElement("td")
+    next_1_hours_td.textContent = data_next_1_hours
+    timeseries_item_div.appendChild(next_1_hours_td)
+    
+    const next_6_hours_td = document.createElement("td")
+    next_6_hours_td.textContent = data_next_6_hours
+    timeseries_item_div.appendChild(next_6_hours_td)
+    
+    const next_12_hours_td = document.createElement("td")
+    next_12_hours_td.textContent = data_next_12_hours
+    timeseries_item_div.appendChild(next_12_hours_td)
 
-    timeseries_div.appendChild(timeseries_item_div)
+    weather_table.appendChild(timeseries_item_div)
 }
