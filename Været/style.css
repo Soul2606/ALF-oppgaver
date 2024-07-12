@@ -6,3 +6,11 @@ body{
 a{
     color: rgb(99, 219, 255);
 }
+
+.flex{
+    display: flex;
+}
+
+.timeseries-item{
+    display: flex;
+}
